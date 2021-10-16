@@ -1,0 +1,14 @@
+[
+    {
+        "id": "90",
+        "books": ["22"],
+        "name": "The Mule",
+        "description": "The Mule is a central character in Foundation and Empire (1952) and Second Foundation (1953). Foundation's Edge (1982) retcons his origin, stating that he originally came from the planet Gaia, but was regarded as an aberration on a world where mental powers were being developed for benevolent ends. His childhood was one of torment and alienation. The Mule becomes aware of his great mental powers in his twenties and develops a desire to compensate for his earlier life by dominating humanity. No indication is ever given of any other names for him besides \"The Mule\", a name he apparently gave himself, \"Magnifico Giganticus\", an alias he takes up to travel among Foundationers, and his statement as Magnifico that his name used to be \"Bobo\""
+    },
+    {
+        "id": "92",
+        "books": ["22", "43"],
+        "name": "Hari Seldon",
+        "description": "Hari Seldon is the founder of the two Foundations. He is a psycho-historian who, through the calculations of psycho-history, predicts the downfall of 'The Empire' and a potential 30,000-year interregnum. He sets up the First and Second Foundations to reduce this huge gap from 30,000 years down to 1000 years. Following a trial, Hari Seldon and his 100,000 followers are exiled to the planet Terminus where the First Foundation is set up. Unknown to many, a Second Foundation is set up at a separate location. Clues to its existence come from a statement by Hari Seldon of it being at 'Star's End'. Many searches are made for this and several of the characters have their own theories about where this is."
+    }
+]

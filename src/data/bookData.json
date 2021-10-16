@@ -1,0 +1,27 @@
+[
+    {
+        "id": "12",
+        "title": "Lord of the Rings",
+        "author": "J. R. R. Tolkien"
+    },
+    {
+        "id": "14",
+        "title": "Return of the King",
+        "author": "J. R. R. Tolkien"
+    },
+    {
+        "id": "43",
+        "title": "Foundation",
+        "author": "Issac Asimov"
+    },
+    {
+        "id": "22",
+        "title": "Foundation and Empire",
+        "author": "Issac Asimov"
+    },
+    {
+        "id": "25",
+        "title": "The Hobbit",
+        "author": "J. R. R. Tolkien"
+    }
+]
