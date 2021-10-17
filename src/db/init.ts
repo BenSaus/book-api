@@ -5,7 +5,7 @@ console.log('Datbase initialized...');
 const isDev = process.env.NODE_ENV === 'development';
 
 const dbInit = () => {
-    Book.sync({ force: true });
+    Book.sync({ alter: isDev });
 };
 
 export default dbInit;
