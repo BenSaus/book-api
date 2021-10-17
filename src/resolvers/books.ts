@@ -2,6 +2,7 @@ import { BookType, NoteType, CharacterType } from '../types';
 import noteData from '../data/noteData.json';
 import bookData from '../data/bookData.json';
 import characterData from '../data/characterData.json';
+import * as bookDal from '../db/dal/book';
 
 const notes: NoteType[] = noteData;
 const books: BookType[] = bookData;
@@ -9,7 +10,9 @@ const characters: CharacterType[] = characterData;
 
 const resolvers = {
     Query: {
-        getBooks: () => books,
+        getBooks: async () => {
+            return await bookDal.getBooks();
+        },
         getBook: (_: any, input: any) => {
             const { id }: { id: string } = input;
             const book = books.find((book) => book.id === id);
