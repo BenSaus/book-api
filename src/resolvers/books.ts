@@ -1,22 +1,20 @@
 import { BookType, NoteType, CharacterType } from '../types';
-import noteData from '../data/noteData.json';
-import bookData from '../data/bookData.json';
-import characterData from '../data/characterData.json';
-import * as bookDal from '../db/dal/book';
+import { Dal } from '../db/dal';
 
-const notes: NoteType[] = noteData;
-const books: BookType[] = bookData;
-const characters: CharacterType[] = characterData;
+// https://flaviocopes.com/typescript-object-destructuring/
 
 const resolvers = {
     Query: {
-        getBooks: async () => {
-            return await bookDal.getBooks();
-        },
-        getBook: (_: any, input: any) => {
-            const { id }: { id: string } = input;
-            const book = books.find((book) => book.id === id);
+        getBooks: async (_: any, __: any, context: any) => {
+            const { dal }: { dal: Dal } = context;
 
+            return await dal.Book.getAll();
+        },
+        getBook: async (_: any, input: any, context: any) => {
+            const { id }: { id: string } = input;
+            const { dal }: { dal: Dal } = context;
+
+            const book = await dal.Book.get(id);
             return book;
         },
     },
@@ -28,22 +26,18 @@ const resolvers = {
     //     return books[0];
     // },
     // },
-    Book: {
-        notes(parent: BookType) {
-            const foundNotes = notes.filter(
-                (note) => parent.id === note.bookId
-            );
-
-            return foundNotes;
-        },
-        characters(parent: BookType) {
-            const found = characters.filter((character) =>
-                character.books.includes(parent.id)
-            );
-
-            return found;
-        },
-    },
+    // Book: {
+    // notes(parent: BookType) {
+    //     const foundNotes = notes.filter(
+    //         (note) => parent.id === note.bookId
+    //     );
+    //     return foundNotes;
+    // },
+    // characters(parent: BookType) {
+    //     const found =
+    //     return found;
+    // },
+    // },
 };
 
 export default resolvers;

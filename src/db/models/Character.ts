@@ -1,41 +1,46 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelizeConnection from '../config';
 
-interface BookAttributes {
-    id: string;
-    title: string;
-    author: string;
+interface CharacterAttributes {
+    id: number;
+    name: string;
+    description: string;
+
     createdAt?: Date;
     updatedAt?: Date;
 }
 
 // Setup interfaces for CRUD operations
-export interface BookInput extends Optional<BookAttributes, 'id'> {}
-export interface BookOutput extends Required<BookAttributes> {}
+export interface CharacterInput
+    extends Optional<CharacterAttributes, 'id' | 'description'> {}
+export interface CharacterOutput extends Required<CharacterAttributes> {}
 
 // Extend the sequelize model
-class Book extends Model<BookAttributes, BookInput> implements BookAttributes {
-    public id!: string;
-    public title!: string;
-    public author!: string;
+class Character
+    extends Model<CharacterAttributes, CharacterInput>
+    implements CharacterAttributes
+{
+    public id!: number;
+    public name!: string;
+    public description!: string;
 
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
 }
 
 // Initialize the model
-Book.init(
+Character.init(
     {
         id: {
             type: DataTypes.STRING,
             primaryKey: true,
         },
-        title: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
         },
-        author: {
+        description: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -46,4 +51,4 @@ Book.init(
     }
 );
 
-export default Book;
+export default Character;

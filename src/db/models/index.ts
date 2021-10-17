@@ -1,3 +1,4 @@
 import Book from './Book';
+import Character from './Character';
 
-export default { Book };
+export { Book, Character };
