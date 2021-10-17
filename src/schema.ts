@@ -5,14 +5,7 @@ const schema = gql`
         id: ID!
         title: String!
         author: String!
-        notes: [Note!]!
         characters: [Character!]!
-    }
-
-    type Note {
-        id: ID!
-        book: Book!
-        text: String!
     }
 
     type Character {
@@ -27,15 +20,12 @@ const schema = gql`
 
         getCharacters: [Character!]!
         getCharacter(id: ID!): Character
-
-        getNotes: [Note!]!
-        getNote(id: ID!): Note
     }
 
-    type Mutation {
-        #    addBook(title: String, author: String): Book
-        addNote(bookId: ID!, text: String): Note
-    }
+    #type Mutation {
+    #    addBook(title: String, author: String): Book
+    #    addNote(bookId: ID!, text: String): Note
+    #}
 `;
 
 export default schema;

@@ -8,7 +8,7 @@ const getAll = async (): Promise<BookOutput[]> => {
     return Book.findAll();
 };
 
-const get = async (id: string): Promise<BookOutput> => {
+const get = async (id: number): Promise<BookOutput> => {
     const book = await Book.findByPk(id);
     if (!book) {
         throw new Error('Not found');
@@ -17,7 +17,7 @@ const get = async (id: string): Promise<BookOutput> => {
 };
 
 const update = async (
-    id: string,
+    id: number,
     payload: Partial<BookInput>
 ): Promise<BookOutput> => {
     const book = await Book.findByPk(id);
@@ -28,7 +28,7 @@ const update = async (
     return book.update(payload, { where: { id } });
 };
 
-const destroy = async (id: string): Promise<boolean> => {
+const destroy = async (id: number): Promise<boolean> => {
     const num_destroyed = await Book.destroy({ where: { id } });
     if (num_destroyed === 1) {
         return true;

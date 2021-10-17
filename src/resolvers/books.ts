@@ -1,4 +1,4 @@
-import { BookType, NoteType, CharacterType } from '../types';
+import { BookOutput } from '../db/models/Book';
 import { Dal } from '../db/dal';
 
 // https://flaviocopes.com/typescript-object-destructuring/
@@ -11,7 +11,7 @@ const resolvers = {
             return await dal.Book.getAll();
         },
         getBook: async (_: any, input: any, context: any) => {
-            const { id }: { id: string } = input;
+            const { id }: { id: number } = input;
             const { dal }: { dal: Dal } = context;
 
             const book = await dal.Book.get(id);
@@ -26,18 +26,14 @@ const resolvers = {
     //     return books[0];
     // },
     // },
-    // Book: {
-    // notes(parent: BookType) {
-    //     const foundNotes = notes.filter(
-    //         (note) => parent.id === note.bookId
-    //     );
-    //     return foundNotes;
-    // },
-    // characters(parent: BookType) {
-    //     const found =
-    //     return found;
-    // },
-    // },
+    Book: {
+        characters: async (parent: BookOutput, _: any, context: any) => {
+            const { dal }: { dal: Dal } = context;
+            const characters = await dal.Character.getAllFromBook(parent.id);
+
+            return characters;
+        },
+    },
 };
 
 export default resolvers;

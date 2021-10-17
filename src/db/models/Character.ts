@@ -1,13 +1,15 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelizeConnection from '../config';
+import Book from './Book';
 
 interface CharacterAttributes {
     id: number;
     name: string;
     description: string;
+    book_id?: number;
 
-    createdAt?: Date;
-    updatedAt?: Date;
+    created_at?: Date;
+    updated_at?: Date;
 }
 
 // Setup interfaces for CRUD operations
@@ -23,22 +25,23 @@ class Character
     public id!: number;
     public name!: string;
     public description!: string;
+    public book_id!: number;
 
-    public readonly createdAt!: Date;
-    public readonly updatedAt!: Date;
+    public readonly created_at!: Date;
+    public readonly updated_at!: Date;
 }
 
 // Initialize the model
 Character.init(
     {
         id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER.UNSIGNED,
+            autoIncrement: true,
             primaryKey: true,
         },
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
         },
         description: {
             type: DataTypes.STRING,
@@ -48,7 +51,12 @@ Character.init(
     {
         timestamps: true,
         sequelize: sequelizeConnection,
+        underscored: true,
     }
 );
+
+Character.belongsTo(Book, {
+    foreignKey: { name: 'book_id', allowNull: false },
+});
 
 export default Character;

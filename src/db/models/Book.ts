@@ -1,12 +1,14 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelizeConnection from '../config';
+import Character from './Character';
 
 interface BookAttributes {
-    id: string;
+    id: number;
     title: string;
     author: string;
-    createdAt?: Date;
-    updatedAt?: Date;
+
+    created_at?: Date;
+    updated_at?: Date;
 }
 
 // Setup interfaces for CRUD operations
@@ -15,25 +17,25 @@ export interface BookOutput extends Required<BookAttributes> {}
 
 // Extend the sequelize model
 class Book extends Model<BookAttributes, BookInput> implements BookAttributes {
-    public id!: string;
+    public id!: number;
     public title!: string;
     public author!: string;
 
-    public readonly createdAt!: Date;
-    public readonly updatedAt!: Date;
+    public readonly created_at!: Date;
+    public readonly updated_at!: Date;
 }
 
 // Initialize the model
 Book.init(
     {
         id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER.UNSIGNED,
+            autoIncrement: true,
             primaryKey: true,
         },
         title: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
         },
         author: {
             type: DataTypes.STRING,
@@ -43,6 +45,7 @@ Book.init(
     {
         timestamps: true,
         sequelize: sequelizeConnection,
+        underscored: true,
     }
 );
 

@@ -1,19 +1,14 @@
-type NoteType = {
-    id: string;
-    bookId: string;
-    text: string;
-};
-
 type BookType = {
-    id: string;
+    id: number;
     title: string;
     author: string;
 };
 
 type CharacterType = {
-    id: string;
+    id: number;
     name: string;
     books: string[];
+    book_id: number;
 };
 
-export { NoteType, BookType, CharacterType };
+export { BookType, CharacterType };

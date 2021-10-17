@@ -1,4 +1,4 @@
-import { CharacterType, NoteType, BookType } from '../types';
+import { CharacterOutput } from '../db/models/Character';
 import { Dal } from '../db/dal';
 
 const resolvers = {
@@ -9,7 +9,7 @@ const resolvers = {
             return dal.Character.getAll();
         },
         getCharacter: async (_: any, input: any, context: any) => {
-            const { id }: { id: string } = input;
+            const { id }: { id: number } = input;
             const { dal }: { dal: Dal } = context;
             // const book = books.find((book) => book.id === id);
             const book = await dal.Character.get(id);
@@ -18,15 +18,14 @@ const resolvers = {
         },
     },
 
-    // Character: {
-    //     books(parent: CharacterType) {
-    //         const found = books.filter((book) =>
-    //             parent.books.includes(book.id)
-    //         );
+    Character: {
+        books: async (parent: CharacterOutput, _: any, context: any) => {
+            const { dal }: { dal: Dal } = context;
+            const book = await dal.Book.get(parent.book_id);
 
-    //         return found;
-    //     },
-    // },
+            return [book];
+        },
+    },
 };
 
 export default resolvers;
