@@ -9,9 +9,10 @@ const schema = gql`
     }
 
     type Character {
-        books: [Book!]!
+        id: ID!
         name: String!
         description: String!
+        books: [Book!]!
     }
 
     type Query {

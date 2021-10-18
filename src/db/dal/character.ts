@@ -1,6 +1,5 @@
 import { CharacterInput, CharacterOutput } from '../models/Character';
 import { Character, Book } from '../models';
-import { BookOutput } from '../models/Book';
 
 const create = async (payload: CharacterInput): Promise<CharacterOutput> => {
     return Character.create(payload);
@@ -39,10 +38,4 @@ const destroy = async (id: number): Promise<boolean> => {
     }
 };
 
-const getAllFromBook = async (book_id: number): Promise<CharacterOutput[]> => {
-    const books = await Character.findAll({ where: { book_id } });
-
-    return books;
-};
-
-export default { create, getAll, getAllFromBook, get, update, destroy };
+export default { create, getAll, get, update, destroy };

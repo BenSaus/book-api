@@ -29,7 +29,9 @@ const resolvers = {
     Book: {
         characters: async (parent: BookOutput, _: any, context: any) => {
             const { dal }: { dal: Dal } = context;
-            const characters = await dal.Character.getAllFromBook(parent.id);
+            const characters = await dal.BookCharacter.getAllCharactersFromBook(
+                parent.id
+            );
 
             return characters;
         },

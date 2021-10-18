@@ -21,9 +21,11 @@ const resolvers = {
     Character: {
         books: async (parent: CharacterOutput, _: any, context: any) => {
             const { dal }: { dal: Dal } = context;
-            const book = await dal.Book.get(parent.book_id);
+            const books = await dal.BookCharacter.getAllBooksFromCharacter(
+                parent.id
+            );
 
-            return [book];
+            return books;
         },
     },
 };

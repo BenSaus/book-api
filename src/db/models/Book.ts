@@ -1,6 +1,5 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelizeConnection from '../config';
-import Character from './Character';
 
 interface BookAttributes {
     id: number;
@@ -29,7 +28,7 @@ class Book extends Model<BookAttributes, BookInput> implements BookAttributes {
 Book.init(
     {
         id: {
-            type: DataTypes.INTEGER.UNSIGNED,
+            type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },
