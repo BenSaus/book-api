@@ -1,10 +1,11 @@
-require('dotenv').config();
-
+import * as dotenv from 'dotenv';
 import { ApolloServer } from 'apollo-server';
 import typeDefs from './schema';
 import resolvers from './resolvers';
 import dbInit from './db/init';
 import dal from './db/dal';
+
+dotenv.config();
 
 const PORT = process.env.PORT || 4000;
 

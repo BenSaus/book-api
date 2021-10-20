@@ -7,3 +7,8 @@ export interface Context {
 export interface InputId {
     id: number;
 }
+
+export interface Ids {
+    bookId: number;
+    characterId: number;
+}
