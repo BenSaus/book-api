@@ -1,5 +1,6 @@
 // https://blog.logrocket.com/using-sequelize-with-typescript/
 import { Sequelize } from 'sequelize';
+import pg from 'pg';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -20,6 +21,7 @@ const dbString = process.env.DB_CONNECTION_STRING as string;
 const sequelizeConnection = new Sequelize(dbString, {
     dialect: 'postgres',
     logging: false,
+    dialectModule: pg,
 });
 
 export default sequelizeConnection;
