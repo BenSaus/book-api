@@ -10,5 +10,33 @@
     {
         "character_id": 92,
         "book_id": 43
+    },
+    {
+        "character_id": 93,
+        "book_id": 12
+    },
+    {
+        "character_id": 93,
+        "book_id": 14
+    },
+    {
+        "character_id": 94,
+        "book_id": 25
+    },
+    {
+        "character_id": 94,
+        "book_id": 14
+    },
+    {
+        "character_id": 95,
+        "book_id": 12
+    },
+    {
+        "character_id": 95,
+        "book_id": 14
+    },
+    {
+        "character_id": 95,
+        "book_id": 25
     }
 ]

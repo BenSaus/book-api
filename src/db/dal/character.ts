@@ -1,4 +1,8 @@
-import { CharacterInput, CharacterOutput } from '../models/Character';
+import {
+    CharacterInput,
+    CharacterOutput,
+    CharacterUpdate,
+} from '../models/Character';
 import { Character, Book } from '../models';
 
 const create = async (payload: CharacterInput): Promise<CharacterOutput> => {
@@ -19,7 +23,7 @@ const get = async (id: number): Promise<CharacterOutput> => {
 
 const update = async (
     id: number,
-    payload: Partial<CharacterInput>
+    payload: CharacterUpdate
 ): Promise<CharacterOutput> => {
     const book = await Character.findByPk(id);
     if (!book) {

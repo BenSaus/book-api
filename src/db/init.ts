@@ -13,12 +13,6 @@ const dbInit = async () => {
     await Character.sync({ alter: isDev });
     await BookCharacter.sync({ alter: isDev });
 
-    console.log(
-        '\n === BookCharacter db Init === \n',
-        BookCharacter,
-        '\n===\n'
-    );
-
     await seed();
 };
 

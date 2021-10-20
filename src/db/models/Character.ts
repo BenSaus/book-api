@@ -14,6 +14,10 @@ interface CharacterAttributes {
 // Setup interfaces for CRUD operations
 export interface CharacterInput
     extends Optional<CharacterAttributes, 'id' | 'description'> {}
+export interface CharacterUpdate
+    extends Partial<
+        Omit<CharacterAttributes, 'id' | 'created_at' | 'updated_at'>
+    > {}
 export interface CharacterOutput extends Required<CharacterAttributes> {}
 
 // Extend the sequelize model

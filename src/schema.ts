@@ -16,17 +16,57 @@ const schema = gql`
     }
 
     type Query {
-        getBooks: [Book!]!
-        getBook(id: ID!): Book
+        Books: [Book!]!
+        BookById(id: ID!): Book
 
-        getCharacters: [Character!]!
-        getCharacter(id: ID!): Character
+        Characters: [Character!]!
+        CharacterById(id: ID!): Character
     }
 
-    #type Mutation {
-    #    addBook(title: String, author: String): Book
-    #    addNote(bookId: ID!, text: String): Note
-    #}
+    type Mutation {
+        CreateBook(title: String, author: String): Book
+        UpdateBook(id: ID!, input: UpdateBookInput): Book
+        DeleteBook(id: ID!): Boolean
+
+        CreateCharacter(input: CreateCharacterInput): Character
+        UpdateCharacter(id: ID!, input: UpdateCharacterInput): Character
+        DeleteCharacter(id: ID!): Boolean
+
+        AddCharacterToBook(input: AddCharacterToBookInput): Character
+        RemoveCharacterFromBook(input: RemoveCharacterFromBookInput): Character
+    }
+
+    input CreateBookInput {
+        title: String
+        author: String
+    }
+
+    input UpdateBookInput {
+        title: String
+        author: String
+    }
+
+    input UpdateCharacterInput {
+        name: String
+        description: String
+        books: [ID!]
+    }
+
+    input CreateCharacterInput {
+        name: String
+        description: String
+        books: [ID!]
+    }
+
+    input AddCharacterToBookInput {
+        characterId: ID!
+        bookId: ID!
+    }
+
+    input RemoveCharacterFromBookInput {
+        characterId: ID!
+        bookId: ID!
+    }
 `;
 
 export default schema;

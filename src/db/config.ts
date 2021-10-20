@@ -10,6 +10,7 @@ import { Sequelize } from 'sequelize';
 const sequelizeConnection = new Sequelize({
     dialect: 'sqlite',
     storage: 'temp/db.sqlite',
+    logging: false,
 });
 
 export default sequelizeConnection;

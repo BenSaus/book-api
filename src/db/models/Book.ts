@@ -12,6 +12,8 @@ interface BookAttributes {
 
 // Setup interfaces for CRUD operations
 export interface BookInput extends Optional<BookAttributes, 'id'> {}
+export interface BookUpdate
+    extends Partial<Omit<BookAttributes, 'id' | 'created_at' | 'updated_at'>> {}
 export interface BookOutput extends Required<BookAttributes> {}
 
 // Extend the sequelize model

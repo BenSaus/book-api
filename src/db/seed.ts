@@ -8,8 +8,6 @@ const books: any = bookData;
 const characters: any = characterData;
 const bookCharacters: any = bookCharacterData;
 
-console.log('\n === seed models === \n', models, '\n===\n');
-
 async function seed() {
     try {
         for (const book of books) {

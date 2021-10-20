@@ -1,5 +1,9 @@
-import Book, { BookInput, BookOutput } from '../models/Book';
-import { CharacterInput, CharacterOutput } from '../models/Character';
+import Book, { BookOutput } from '../models/Book';
+import {
+    BookCharacterInput,
+    BookCharacterOutput,
+} from '../models/BookCharacter';
+import { CharacterOutput } from '../models/Character';
 import { BookCharacter, Character } from '../models';
 
 const getAllCharactersFromBook = async (
@@ -24,4 +28,89 @@ const getAllBooksFromCharacter = async (
     return character.Books;
 };
 
-export default { getAllCharactersFromBook, getAllBooksFromCharacter };
+const create = async (
+    payload: BookCharacterInput
+): Promise<BookCharacterOutput> => {
+    return BookCharacter.create(payload);
+};
+
+const bulkCreate = async (
+    payload: BookCharacterInput[]
+): Promise<BookCharacterOutput[]> => {
+    return BookCharacter.bulkCreate(payload);
+};
+
+const getAll = async (): Promise<BookCharacterOutput[]> => {
+    return BookCharacter.findAll();
+};
+
+const get = async (id: number): Promise<BookCharacterOutput> => {
+    const book = await BookCharacter.findByPk(id);
+    if (!book) {
+        throw new Error('Not found');
+    }
+    return book;
+};
+
+const update = async (
+    id: number,
+    payload: Partial<BookCharacterInput>
+): Promise<BookCharacterOutput> => {
+    const book = await BookCharacter.findByPk(id);
+    if (!book) {
+        throw new Error('Not found');
+    }
+
+    return book.update(payload, { where: { id } });
+};
+
+const destroy = async (
+    book_id: number,
+    character_id: number
+): Promise<boolean> => {
+    const num_destroyed = await BookCharacter.destroy({
+        where: { book_id, character_id },
+    });
+    if (num_destroyed === 1) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
+const destroyAllWithCharacterId = async (
+    character_id: number
+): Promise<boolean> => {
+    const num_destroyed = await BookCharacter.destroy({
+        where: { character_id },
+    });
+    if (num_destroyed === 1) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
+const destroyAllWithBookId = async (book_id: number): Promise<boolean> => {
+    const num_destroyed = await BookCharacter.destroy({
+        where: { book_id },
+    });
+    if (num_destroyed === 1) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
+export default {
+    create,
+    bulkCreate,
+    get,
+    getAll,
+    getAllCharactersFromBook,
+    getAllBooksFromCharacter,
+    update,
+    destroy,
+    destroyAllWithCharacterId,
+    destroyAllWithBookId,
+};

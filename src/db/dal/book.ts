@@ -25,7 +25,11 @@ const update = async (
         throw new Error('Not found');
     }
 
-    return book.update(payload, { where: { id } });
+    const resp = await book.update(payload, {
+        where: { id },
+    });
+
+    return resp; // ADD returning here so we get the updated book back to send to the client in graphql
 };
 
 const destroy = async (id: number): Promise<boolean> => {
