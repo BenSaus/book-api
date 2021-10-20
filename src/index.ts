@@ -7,7 +7,7 @@ import dal from './db/dal';
 
 dotenv.config();
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 9595;
 
 dbInit();
 const server = new ApolloServer({
