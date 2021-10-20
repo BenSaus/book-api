@@ -10,7 +10,7 @@ Project is created with:
 -   Node JS
 -   AWS Lambda
 -   GraphQL
--   PostgreSQL
+-   PostgreSQL (AWS RDS)
 -   Docker
 
 ## Setup
@@ -24,7 +24,25 @@ $ npm run docker
 
 ## Features
 
-### To DO:
+### Queries
+
+Characters
+Character
+
+Books
+Book
+
+### Mutations
+
+CreateBook
+UpdateBook
+DeleteBook
+
+CreateCharacter
+UpdateCharacter
+DeleteCharacter
+
+### To Do:
 
 -   Basic Authentication
 -   Pagination

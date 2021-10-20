@@ -20,8 +20,8 @@ const resolvers = {
         },
     },
     Mutation: {
-        CreateBook: async (_: any, input: BookInput, { dal }: Context) => {
-            const book = await dal.Book.create(input);
+        CreateBook: async (_: any, args: BookInput, { dal }: Context) => {
+            const book = await dal.Book.create(args);
             return book;
         },
 

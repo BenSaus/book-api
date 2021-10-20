@@ -26,8 +26,8 @@ const resolvers = {
         },
     },
     Mutation: {
-        CreateCharacter: async (_: any, param: any, { dal }: Context) => {
-            const { input }: { input: CreateCharcterInput } = param; // TODO: Rename these params
+        CreateCharacter: async (_: any, args: any, { dal }: Context) => {
+            const { input }: { input: CreateCharcterInput } = args;
 
             const character = await dal.Character.create(input);
 
@@ -62,8 +62,8 @@ const resolvers = {
 
             return deleted;
         },
-        AddCharacterToBook: async (_: any, input: any, { dal }: Context) => {
-            const { bookId, characterId }: Ids = input.input; // TODO: Fix this
+        AddCharacterToBook: async (_: any, args: any, { dal }: Context) => {
+            const { bookId, characterId }: Ids = args.input;
             const book = dal.Book.get(bookId);
             const character = dal.Character.get(characterId);
 
@@ -83,10 +83,10 @@ const resolvers = {
         },
         RemoveCharacterFromBook: async (
             _: any,
-            input: any,
+            args: any,
             { dal }: Context
         ) => {
-            const { bookId, characterId }: Ids = input.input; // TODO: Fix this
+            const { bookId, characterId }: Ids = args.input; // TODO: Fix this
             const book = dal.Book.get(bookId);
             const character = dal.Character.get(characterId);
 
