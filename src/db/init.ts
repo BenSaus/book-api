@@ -13,7 +13,7 @@ const dbInit = async () => {
     await Book.sync({ alter: isDev });
     await Character.sync({ alter: isDev });
     await BookCharacter.sync({ alter: isDev });
-    await User.sync({ alter: true });
+    await User.sync({ alter: isDev });
 
     if (seedDb) await seed();
 };
