@@ -15,12 +15,24 @@ const schema = gql`
         books: [Book!]!
     }
 
+    type User {
+        id: ID!
+        email: String!
+    }
+
+    type AuthPayload {
+        user: User!
+        token: String!
+    }
+
     type Query {
         Books: [Book!]!
         BookById(id: ID!): Book
 
         Characters: [Character!]!
         CharacterById(id: ID!): Character
+
+        Login(input: LoginInput): AuthPayload!
     }
 
     type Mutation {
@@ -34,6 +46,8 @@ const schema = gql`
 
         AddCharacterToBook(input: AddCharacterToBookInput): Character
         RemoveCharacterFromBook(input: RemoveCharacterFromBookInput): Character
+
+        RegisterUser(input: RegisterUserInput): AuthPayload!
     }
 
     input CreateBookInput {
@@ -66,6 +80,16 @@ const schema = gql`
     input RemoveCharacterFromBookInput {
         characterId: ID!
         bookId: ID!
+    }
+
+    input RegisterUserInput {
+        email: String!
+        password: String!
+    }
+
+    input LoginInput {
+        email: String!
+        password: String!
     }
 `;
 

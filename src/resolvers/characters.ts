@@ -4,7 +4,7 @@ import {
     CharacterUpdate,
 } from '../db/models/Character';
 import { BookCharacterInput } from '../db/models/BookCharacter';
-import { Context, InputId, Ids } from './types';
+import { Context, InputId, BookAndCharacterIds } from './types';
 
 interface CreateCharcterInput extends CharacterInput {
     books?: number[];
@@ -63,7 +63,7 @@ const resolvers = {
             return deleted;
         },
         AddCharacterToBook: async (_: any, args: any, { dal }: Context) => {
-            const { bookId, characterId }: Ids = args.input;
+            const { bookId, characterId }: BookAndCharacterIds = args.input;
             const book = dal.Book.get(bookId);
             const character = dal.Character.get(characterId);
 
@@ -86,7 +86,7 @@ const resolvers = {
             args: any,
             { dal }: Context
         ) => {
-            const { bookId, characterId }: Ids = args.input; // TODO: Fix this
+            const { bookId, characterId }: BookAndCharacterIds = args.input; // TODO: Fix this
             const book = dal.Book.get(bookId);
             const character = dal.Character.get(characterId);
 

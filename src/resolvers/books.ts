@@ -1,8 +1,5 @@
-import { Optional } from 'sequelize/types';
 import { BookInput, BookOutput, BookUpdate } from '../db/models/Book';
 import { Context, InputId } from './types';
-
-// https://flaviocopes.com/typescript-object-destructuring/
 
 const resolvers = {
     Query: {

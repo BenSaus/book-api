@@ -8,6 +8,7 @@ import dal from './db/dal';
 dotenv.config();
 
 const PORT = process.env.PORT || 9595;
+const JWT_SECRET = process.env.JWT_SECRET;
 
 dbInit();
 const server = new ApolloServer({
@@ -15,6 +16,7 @@ const server = new ApolloServer({
     resolvers,
     context: () => ({
         dal,
+        jwtSecret: JWT_SECRET,
     }),
 });
 

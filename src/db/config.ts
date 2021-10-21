@@ -1,4 +1,3 @@
-// https://blog.logrocket.com/using-sequelize-with-typescript/
 import { Sequelize } from 'sequelize';
 import pg from 'pg';
 import * as dotenv from 'dotenv';

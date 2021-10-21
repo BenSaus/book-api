@@ -1,50 +1,42 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelizeConnection from '../config';
 
-interface CharacterAttributes {
+interface UserAttributes {
     id: number;
-    name: string;
-    description: string;
+    email: string;
+    password?: string;
 
     created_at?: Date;
     updated_at?: Date;
 }
 
-// Setup interfaces for CRUD operations
-export interface CharacterInput
-    extends Optional<CharacterAttributes, 'id' | 'description'> {}
-export interface CharacterUpdate
-    extends Partial<
-        Omit<CharacterAttributes, 'id' | 'created_at' | 'updated_at'>
-    > {}
-export interface CharacterOutput extends Required<CharacterAttributes> {}
+export interface UserInput extends Optional<UserAttributes, 'id'> {}
+export interface UserOutput extends Required<UserAttributes> {}
 
 // Extend the sequelize model
-class Character
-    extends Model<CharacterAttributes, CharacterInput>
-    implements CharacterAttributes
-{
+class User extends Model<UserAttributes, UserInput> implements UserAttributes {
     public id!: number;
-    public name!: string;
-    public description!: string;
+    public email!: string;
+    public password!: string;
 
     public readonly created_at!: Date;
     public readonly updated_at!: Date;
 }
 
 // Initialize the model
-Character.init(
+User.init(
     {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },
-        name: {
+        email: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
         },
-        description: {
+        password: {
             type: DataTypes.STRING(1024),
             allowNull: false,
         },
@@ -56,4 +48,4 @@ Character.init(
     }
 );
 
-export default Character;
+export default User;

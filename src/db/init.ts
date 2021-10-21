@@ -2,6 +2,7 @@ import Book from './models/Book';
 import Character from './models/Character';
 import BookCharacter from './models/BookCharacter';
 import seed from './seed';
+import { User } from './models';
 
 console.log('Database initialized...');
 
@@ -12,6 +13,7 @@ const dbInit = async () => {
     await Book.sync({ alter: isDev });
     await Character.sync({ alter: isDev });
     await BookCharacter.sync({ alter: isDev });
+    await User.sync({ alter: true });
 
     if (seedDb) await seed();
 };
