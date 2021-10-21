@@ -14,8 +14,7 @@ services:
     bookapi:
         build: .
         image: bookapi
-        # command: dockerize -wait tcp://postgres:5432 -timeout 30s
-        command: 'npm start'
+        command: dockerize -wait tcp://postgres:5432 -timeout 30s npm start
         environment:
             DB_CONNECTION_STRING: postgres://postgres:1234@postgres:5432/bookdb
             SEED_DB: true

@@ -29,5 +29,3 @@ RUN npm run build
 
 # Set port
 EXPOSE 9595
-
-CMD ["npm", "start"]
