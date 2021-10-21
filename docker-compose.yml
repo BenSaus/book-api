@@ -20,6 +20,7 @@ services:
             DB_CONNECTION_STRING: postgres://postgres:1234@postgres:5432/bookdb
             SEED_DB: true
             PORT: 9595
+            JWT_SECRET: 123456
         ports:
             - '9595:9595'
         depends_on:
