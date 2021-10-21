@@ -22,28 +22,9 @@ $ git clone https://github.com/BenSaus/book-api
 $ npm run docker
 ```
 
-## Features
-
-### Queries
-
-Characters
-Character
-
-Books
-Book
-
-### Mutations
-
-CreateBook
-UpdateBook
-DeleteBook
-
-CreateCharacter
-UpdateCharacter
-DeleteCharacter
-
 ### To Do:
 
 -   Basic Authentication
 -   Pagination
--   CI/CD
+-   CI/CD with Github Actions
+-   Testing with Jest
